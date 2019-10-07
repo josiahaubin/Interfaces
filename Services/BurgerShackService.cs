@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using burgershack.Models;
+using Interfaces.Models;
 
 namespace burgershack.Services
 {
@@ -13,6 +14,8 @@ namespace burgershack.Services
     public List<Burger> Burgers { get; set; }
     //NOTE List of type string Ingredients
     public List<string> Ingredients { get; set; }
+    //NOTE List of type HotDog called HotDogs
+    public List<HotDog> HotDogs { get; set; }
 
     //NOTE Method called StartUp which creates our data
     public void StartUp()
@@ -28,8 +31,13 @@ namespace burgershack.Services
       Burger baconCheeseBurger = new Burger("Bacon Cheeze Burger", 2500, 55, 1500, 125, "Beef", 11.00, Ingredients);
       Burger bisonBurger = new Burger("Bison Burger", 1500, 15, 1750, 100, "Bison", 15.00, Ingredients);
 
+      //NOTE Creating Hotdogs
+      HotDog frank = new HotDog("Good ol Frank", 200, 15, 25, 15, 3.25);
+
       //NOTE adding burgers to the burger list
       Burgers.AddRange(new Burger[] { cheeseBurger, baconCheeseBurger, bisonBurger });
+      //NOTE adding hotdos to the hotdog list
+      HotDogs.AddRange(new HotDog[] { frank });
     }
 
     //NOTE GetItems gets the Items from the Burger and Message list
@@ -40,6 +48,13 @@ namespace burgershack.Services
       {
         Burger burger = Burgers[i];
         Messages.Add($"{i + 1}: {burger.Name} - Cals:{burger.Calories} - {burger.BasePrice:c}");
+      }
+      Console.WriteLine();
+      Messages.Add("Hot Dawgs:");
+      for (int i = 0; i < HotDogs.Count; i++)
+      {
+        HotDog hotDog = HotDogs[i];
+        Messages.Add($"{i + 1}: {hotDog.Name} - Cals:{hotDog.Calories} - {hotDog.BasePrice:c}");
       }
       Print();
       Messages.Clear();
@@ -77,6 +92,7 @@ namespace burgershack.Services
       Messages = new List<string>();
       Burgers = new List<Burger>();
       Ingredients = new List<string>();
+      HotDogs = new List<HotDog>();
 
       //NOTE creates our data when service is called
       StartUp();
