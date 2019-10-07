@@ -18,11 +18,22 @@ namespace burgershack.Models
 
     public override string GetTemplate()
     {
+      string ingredients = "";
+
+      foreach (string ingredient in Ingredients)
+      {
+        ingredients += $" {ingredient}";
+      }
+
       string template = $@"
 Burger: {Name}
 Price: {BasePrice:c}
 Meat:{MeatType}
-Ingredients: {Ingredients}
+Ingredients:{ingredients}
+Cals:{Calories}
+Fat:{Fat}
+Carbs:{Carbohydrates}
+Brotein:{Protein}
 
 Press any key to return to the Burger Menu
       ";
