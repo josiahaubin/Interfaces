@@ -48,11 +48,19 @@ namespace burgershack.Services
     //NOTE GetItem gets the details of the specific burger the user selects
     public void GetItem(int index)
     {
-      Console.Clear();
-      Burger burger = Burgers[index];
-      Messages.Add(burger.GetTemplate());
-      Print();
-      Messages.Clear();
+      if (index > -1 && index < Burgers.Count)
+      {
+        Console.Clear();
+        Burger burger = Burgers[index];
+        Messages.Add(burger.GetTemplate());
+        Print();
+        Messages.Clear();
+
+      }
+      else
+      {
+        Console.WriteLine("Invalid Selection");
+      }
     }
 
     //NOTE prints to the screen

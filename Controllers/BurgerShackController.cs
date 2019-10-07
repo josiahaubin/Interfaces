@@ -35,10 +35,6 @@ namespace burgershack.Controllers
             Console.ReadKey();
             Console.Clear();
           }
-          else
-          {
-            Console.WriteLine("Invalid Selection");
-          }
           break;
       }
     }
