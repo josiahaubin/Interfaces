@@ -16,6 +16,19 @@ namespace burgershack.Models
       return BasePrice + (SizeMultiplier * (int)size);
     }
 
+    public override string GetTemplate()
+    {
+      string template = $@"
+Burger: {Name}
+Price: {BasePrice:c}
+Meat:{MeatType}
+Ingredients: {Ingredients}
+
+Press any key to return to the Burger Menu
+      ";
+
+      return template;
+    }
 
 
     public Burger(string name, int calories, int fat, int protein, int carbohydrates, string meat, double price, IEnumerable<string> ingredients) : base(name, calories, fat, protein, carbohydrates)

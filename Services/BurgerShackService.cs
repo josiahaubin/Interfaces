@@ -41,6 +41,23 @@ namespace burgershack.Services
         Burger burger = Burgers[i];
         Messages.Add($"{i + 1}: {burger.Name} - Cals:{burger.Calories} - {burger.BasePrice:c}");
       }
+      Print();
+      Messages.Clear();
+    }
+
+    //NOTE GetItem gets the details of the specific burger the user selects
+    public void GetItem(int index)
+    {
+      Console.Clear();
+      Burger burger = Burgers[index];
+      Messages.Add(burger.GetTemplate());
+      Print();
+      Messages.Clear();
+    }
+
+    //NOTE prints to the screen
+    public void Print()
+    {
       foreach (string message in Messages)
       {
         Console.WriteLine(message);
